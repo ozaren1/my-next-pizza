@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { useSet } from 'react-use';
+import React from "react";
+import { useSet } from "react-use";
 
-import { FilterCheckbox, FilterChecboxProps } from './filter-checkbox';
-import { Input } from '../ui/input';
-import { Target } from 'lucide-react';
+import { FilterCheckbox, FilterChecboxProps } from "./filter-checkbox";
+import { Input } from "../ui/input";
+import { Target } from "lucide-react";
 
 type Item = FilterChecboxProps;
 
@@ -25,25 +25,27 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
   items,
   defaultItems,
   limit = 5,
-  searchInputPlaceholder = 'Поиск...',
+  searchInputPlaceholder = "Поиск...",
   className,
   onChange,
   defaultValue,
 }) => {
   const [showAll, setShowAll] = React.useState(false);
-  const [searchValue, setSearchvalue] = React.useState('');
+  const [searchValue, setSearchvalue] = React.useState("");
   const [selected, { add, toggle }] = useSet<string>(new Set([]));
 
   const onChangeSearchInput = (value: string) => {
     setSearchvalue(value);
-  }
+  };
 
   const onCheckedChange = (value: string) => {
     toggle(value);
   };
-  const list = showAll ? items.filter((item) => item.text.toLowerCase().includes(searchValue.toLowerCase())) : defaultItems.slice(0, limit);
-
-
+  const list = showAll
+    ? items.filter((item) =>
+        item.text.toLowerCase().includes(searchValue.toLowerCase()),
+      )
+    : defaultItems.slice(0, limit);
 
   return (
     <div className={className}>
@@ -51,27 +53,34 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
 
       {showAll && (
         <div className="mb-5">
-          <Input onChange={e => onChangeSearchInput(e.target.value)} placeholder={searchInputPlaceholder} className="bg-gray-50 border-none" />
+          <Input
+            onChange={(e) => onChangeSearchInput(e.target.value)}
+            placeholder={searchInputPlaceholder}
+            className="bg-gray-50 border-none"
+          />
         </div>
       )}
 
       <div className="flex flex-col gap-4 max-h-96 pr-2 overflow-auto scrollbar">
-        {list.map((item, index) =>(
+        {list.map((item, index) => (
           <FilterCheckbox
-          key={index}
-          text={item.text}
-          value={item.value}
-          endAdornment={item.endAdornment}
-          checked={false}
-          onCheckedChange={(ids) => console.log(ids)}
+            key={index}
+            text={item.text}
+            value={item.value}
+            endAdornment={item.endAdornment}
+            checked={false}
+            onCheckedChange={(ids) => console.log(ids)}
           />
         ))}
       </div>
 
       {items.length > limit && (
-        <div className={showAll ? 'border-t border-t-neutral-100 mt-4' : ''}>
-          <button onClick={() => setShowAll(!showAll)} className="text-primary mt-3">
-            {showAll ? 'Скрыть' : '+ Показать все'}
+        <div className={showAll ? "border-t border-t-neutral-100 mt-4" : ""}>
+          <button
+            onClick={() => setShowAll(!showAll)}
+            className="text-primary mt-3"
+          >
+            {showAll ? "Скрыть" : "+ Показать все"}
           </button>
         </div>
       )}
