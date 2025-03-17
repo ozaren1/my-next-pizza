@@ -2,14 +2,12 @@ import { prisma } from "@@/prisma/prisma-client"
 import { notFound } from "next/navigation";
 import { Container, GroupVariants, PizzaImage, Title } from "@@/shared/components/shared";
 
-interface ProductModalPageProps {
-    params: { id: string };
-  }
+
   
-  export default async function ProductPage({ params }: ProductModalPageProps) {
+  export default async function ProductPage({ params }: any) {
     const { id } = params;
   
-  
+  console.log(params)
     const product = await prisma.product.findFirst({where : {id: Number(id)}}); //получение из бд продукта по его id
     if(!product){
         return notFound();
