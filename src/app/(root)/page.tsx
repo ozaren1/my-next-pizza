@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
+import React, {} from "react";
 import {
   Container,
   Title,
   TopBar,
   Filters,
-  ProductCard,
   ProductsGroupList,
 } from "@@/shared/components/shared";
 import { prisma } from "@@/prisma/prisma-client";
@@ -38,7 +37,7 @@ export default async function Home() {
           {/*Список эл*/}
           <div className="flex-1">
             <div className="flex flex-col gap-16">
-              {categories.map((category, index) => (
+              {categories.map((category) => (
                 category.products.length > 0 && (
                   <ProductsGroupList
                     key={category.id}
