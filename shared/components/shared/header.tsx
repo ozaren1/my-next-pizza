@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Button } from "../ui";
 import { User, ShoppingCart, ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { Container, SearchInput} from "@/components/shared";
+import { Container, SearchInput} from "@@/shared/components/shared";
 
 interface Props {
   className?: string;

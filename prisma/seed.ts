@@ -27,11 +27,6 @@ const randomDecimalNumber = (min: number, max: number) => {
   {/*вспомогательная функция для рандомной генерации стоимости пицц*/}
 
 
-
-
-
-
-
 async function up() {
     await prisma.user.createMany({
         data : [
@@ -171,19 +166,6 @@ async function up() {
     });
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 async function down() {

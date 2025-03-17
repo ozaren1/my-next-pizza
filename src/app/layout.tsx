@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 import "./globals.css";
-import { Header } from "@/components/shared/header";
 
 const nunito = Nunito({
   subsets: ["cyrillic"],
@@ -11,6 +10,15 @@ const nunito = Nunito({
 
 export const metadata: Metadata = {
   title: "Next pizza",
+  icons: {
+    icon: "/favicon.ico", // Для стандартного favicon
+    apple: "/favicon.ico", // Для устройств Apple
+    other: [
+      { rel: "icon", url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { rel: "icon", url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { rel: "manifest", url: "/site.webmanifest" },
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -21,8 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${nunito.variable}  antialiased`}>
-        <Header />
-        <main className="min-h-screen">{children}</main>
+        {children}
       </body>
     </html>
   );
