@@ -1,5 +1,3 @@
-
-
 import React, {} from "react";
 import { Button } from "@@/shared/components/ui";
 import { PizzaImage, Title } from "@@/shared/components/shared";

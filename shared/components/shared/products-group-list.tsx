@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useEffect, useRef } from "react";
 import { Title } from "./title";
 import { ProductCard } from "./product-card";

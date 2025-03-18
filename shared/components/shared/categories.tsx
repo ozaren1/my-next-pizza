@@ -1,6 +1,5 @@
 "use client";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
 import React from "react";
 import { useCategoryStore } from "../../../shared/store/category";
 import { Category } from "@prisma/client";
@@ -17,7 +16,7 @@ export const Categories: React.FC<Props> = ({ items ,className }) => {
     <div
       className={cn("inline-flex gap-1 bg-gray-50 p-1 rounded-2xl", className)}
     >
-      {items.map(({ name, id }, index) => (
+      {items.map(({ name, id }, ) => (
         <a
           key={id}
           className={cn(
