@@ -1,5 +1,5 @@
 import { axiosInstance } from "./axios"
-import { CartDTO, CreateCartItemValue } from "./dto/cart-dto";
+import { CartDTO, CreateCartItemValues } from "./dto/cart-dto";
 
 export const getCart = async (): Promise<CartDTO> => {
     const { data } = await axiosInstance.get<CartDTO>('/cart');
@@ -21,7 +21,7 @@ export const removeCartitem = async (id: number): Promise<CartDTO> => {
 }
 
 
-export const addCartItem = async (values: CreateCartItemValue) => {
+export const addCartItem = async (values: CreateCartItemValues) => {
     const { data } = await axiosInstance.post<CartDTO>('/cart', values);
     return data
 }

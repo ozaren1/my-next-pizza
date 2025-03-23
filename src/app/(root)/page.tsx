@@ -1,4 +1,4 @@
-import React, {} from "react";
+import React, { Suspense } from "react";
 import {
   Container,
   Title,
@@ -31,7 +31,10 @@ export default async function Home() {
         <div className="flex gap-[80px]">
           {/*Фильрация*/}
           <div className="w-[250px]">
-            <Filters />
+            <Suspense>
+              <Filters />
+            </Suspense>
+            
           </div>
 
           {/*Список эл*/}

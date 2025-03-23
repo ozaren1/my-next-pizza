@@ -4,10 +4,15 @@ import { ChooseProductModal } from "@@/shared/components/shared";
 
 
 
-export default async function ProductModalPage({ params }: any) {
+export default async function ProductModalPage( {
+  params,
+}: {
+  params: Promise<{ id: string }>
+}  ) {
+  const id = (await params).id;
   const product = await prisma.product.findFirst({
     where: {
-      id: Number(params.id), // Приводим id к числу
+      id: Number(id), // Приводим id к числу
     },
     include: {
       ingredients: true,

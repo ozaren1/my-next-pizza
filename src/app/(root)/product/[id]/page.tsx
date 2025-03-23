@@ -4,10 +4,12 @@ import { Container, GroupVariants, PizzaImage, Title } from "@@/shared/component
 
 
   
-  export default async function ProductPage({ params }: any) {
-    const { id } = params;
-  
-  console.log(params)
+  export default async function ProductPage( {
+    params,
+  }: {
+    params: Promise<{ id: string }>
+  }  ) {
+    const id = (await params).id;
     const product = await prisma.product.findFirst({where : {id: Number(id)}}); //получение из бд продукта по его id
     if(!product){
         return notFound();

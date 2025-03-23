@@ -50,9 +50,9 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({ children 
             </SheetHeader>
             {/** items */}
             <div className="-mx-6 mt-5 overflow-auto flex-1 scrollbar">
-              <div className=" mb-2">
                 {
                   items.map((item) => (
+                    <div className=" mb-2">
                     <CartDrawerItem 
                     key={item.id}
                     id={item.id}
@@ -62,12 +62,13 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({ children 
                     name={item.name}
                     price={item.price} 
                     details={item.pizzaSize && item.pizzaType ? getCartItemDetails(item.ingredients, item.pizzaType as PizzaType, item.pizzaSize as PizzaSize) : ''} 
-                    imageUrl="https://media.dodostatic.net/image/r:584x584/11EE7D61706D472F9A5D71EB94149304.webp"
+                    imageUrl={item.imageUrl}
                   />
+                   </div>
                   ))
                 }
                
-              </div>
+             
             
             </div>
            
